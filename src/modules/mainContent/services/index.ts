@@ -1,4 +1,31 @@
+import { TDocument } from '../types'
+
 export const fetchDocuments = async () => {
-  const response = await fetch('/api/documents')
-  return response.json()
+  try {
+    const response = await fetch('/api/documents')
+    return response.json()
+  } catch (error) {
+    console.error('error while fetching documents list', error)
+  }
+}
+
+export const changeDocumentsOrder = async ({
+  newOrderedDocs,
+}: {
+  newOrderedDocs: TDocument[]
+}) => {
+  try {
+    const response = await fetch('/api/documents', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(newOrderedDocs),
+    })
+    return response.json()
+  } catch (error) {
+    console.log('error while send change documents order request:', error)
+  }
 }
