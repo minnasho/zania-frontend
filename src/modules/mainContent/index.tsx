@@ -5,9 +5,12 @@ import { DraggableItem } from './components/draggableItem'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { useMainContent } from './hooks'
+import { Overlay } from './components/overlay'
+import { useOverlay } from './hooks/useOverlay'
 
 export const MainContent = () => {
   const { isLoading, items, moveItem } = useMainContent()
+  const { selectedImage, closeOverlay, openOverlay } = useOverlay()
 
   return (
     <div className={styles.container}>
@@ -21,11 +24,16 @@ export const MainContent = () => {
                 doc={doc}
                 index={idx}
                 moveItem={moveItem}
+                onClick={() => openOverlay({ imageSrc: `/${doc.type}.png` })}
               />
             ),
           )}
         </Grid>
       </DndProvider>
+      {/* Overlay for displaying the selected image */}
+      {selectedImage && (
+        <Overlay selectedImage={selectedImage} closeOverlay={closeOverlay} />
+      )}
     </div>
   )
 }
