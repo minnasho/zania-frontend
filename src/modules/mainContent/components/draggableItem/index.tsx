@@ -2,12 +2,12 @@ import { Grid } from '@material-ui/core'
 import { Tile } from '../tile'
 import { TDraggableItemProps } from '../../types'
 import { useDrag, useDrop } from 'react-dnd'
-// import { useMoveItem } from '../../hooks/useMoveItem'
 
 export const DraggableItem = ({
   doc,
   index,
   moveItem,
+  onClick,
 }: TDraggableItemProps) => {
   const [, ref] = useDrag({
     type: 'card',
@@ -24,7 +24,13 @@ export const DraggableItem = ({
   })
 
   return (
-    <Grid ref={(node: HTMLDivElement) => ref(drop(node))} item md={6} lg={4}>
+    <Grid
+      ref={(node: HTMLDivElement) => ref(drop(node))}
+      item
+      md={6}
+      lg={4}
+      onClick={onClick}
+    >
       <Tile doc={doc} />
     </Grid>
   )

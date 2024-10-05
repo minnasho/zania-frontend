@@ -11,5 +11,12 @@ export type TTileProps = {
 export type TDraggableItemProps = {
   doc: TDocument
   index: number
+  onClick: () => void
   moveItem: (dragIndex: number, hoverIndex: number) => void
+}
+
+export type TOverlayProps = {
+  selectedImage: string
+  closeOverlay: () => void
+  isOpen?: boolean
 }
