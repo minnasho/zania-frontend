@@ -5,7 +5,9 @@ import App from './app/App.tsx'
 import './index.scss'
 
 // Start the mocking server
-await worker.start()
+(async () => {
+  await worker.start()
+})()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
