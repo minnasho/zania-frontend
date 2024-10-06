@@ -10,8 +10,9 @@ export const useMainContent = () => {
     queryFn: fetchDocuments,
   })
   const [items, setItems] = useState(documents)
-  const { setHasChange, isSaving, calculateTimeSinceLastSave } =
-    useUpdateDocuments(items || [])
+  const { setHasChange, isSaving, timeSinceLastSave } = useUpdateDocuments(
+    items || [],
+  )
 
   useEffect(() => {
     setItems(documents)
@@ -38,6 +39,6 @@ export const useMainContent = () => {
     isSaving: isSaving,
     items,
     moveItem,
-    calculateTimeSinceLastSave,
+    timeSinceLastSave,
   }
 }
