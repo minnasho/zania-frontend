@@ -6,7 +6,7 @@ export const Tile = ({ doc }: TTileProps) => {
   return (
     <div className={styles.card}>
       {doc ? (
-        <img src={`/${doc.type}.png`} alt={doc.title} />
+        <img src={`${doc.type}.png`} alt={doc.title} />
       ) : (
         <Skeleton
           variant="rectangular"

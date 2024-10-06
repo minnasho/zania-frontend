@@ -24,7 +24,7 @@ export const MainContent = () => {
                 doc={doc}
                 index={idx}
                 moveItem={moveItem}
-                onClick={() => openOverlay({ imageSrc: `/${doc.type}.png` })}
+                onClick={() => openOverlay({ imageSrc: `${doc.type}.png` })}
               />
             ),
           )}
