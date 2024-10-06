@@ -6,7 +6,7 @@ import { CircularProgress } from '@mui/material'
 export const Overlay: React.FC<TOverlayProps> = ({
   selectedImage,
   onClick,
-  moode = 'image',
+  moode,
 }) => {
   return (
     <div className={styles.overlay} onClick={onClick}>

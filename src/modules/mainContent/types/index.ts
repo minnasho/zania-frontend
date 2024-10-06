@@ -18,5 +18,5 @@ export type TDraggableItemProps = {
 export type TOverlayProps = {
   selectedImage?: string
   onClick: () => void
-  moode?: 'saving' | 'image'
+  moode: 'saving' | 'image'
 }

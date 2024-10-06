@@ -7,14 +7,14 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import { useMainContent, useOverlay } from './hooks'
 
 export const MainContent = () => {
-  const { isLoading, isSaving, items, moveItem, calculateTimeSinceLastSave } =
+  const { isLoading, isSaving, items, moveItem, timeSinceLastSave } =
     useMainContent()
   const { selectedImage, closeOverlay, openOverlay } = useOverlay()
 
   return (
     <div className={styles.container}>
       <h1>Documents</h1>
-      <p>{`last update: ${calculateTimeSinceLastSave()}`}</p>
+      <p>{`last update: ${timeSinceLastSave}`}</p>
       <DndProvider backend={HTML5Backend}>
         <Grid container spacing={3}>
           {(isLoading ? Array.from(new Array(5)) : items)?.map(
