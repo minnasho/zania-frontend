@@ -19,11 +19,11 @@ const getDocuments = () => {
 }
 
 export const handlers = [
-  http.get('/api/documents', async () => {
+  http.get('api/documents', async () => {
     await delay(1000)
     return HttpResponse.json(getDocuments())
   }),
-  http.post('/api/documents', async ({ request }) => {
+  http.post('api/documents', async ({ request }) => {
     const data = await request.json()
 
     // Delay response by 1 second?
