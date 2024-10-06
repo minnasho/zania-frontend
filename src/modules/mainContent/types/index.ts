@@ -16,7 +16,7 @@ export type TDraggableItemProps = {
 }
 
 export type TOverlayProps = {
-  selectedImage: string
-  closeOverlay: () => void
-  isOpen?: boolean
+  selectedImage?: string
+  onClick: () => void
+  moode?: 'saving' | 'image'
 }

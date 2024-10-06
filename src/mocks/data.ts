@@ -1,4 +1,4 @@
-export const documents = [
+export const initialDocuments = [
   {
     type: 'bankDraft',
     title: 'Bank Draft',

@@ -1,20 +1,20 @@
 import styles from './mainContent.module.scss'
 import Grid from '@material-ui/core/Grid'
 import { TDocument } from './types'
-import { DraggableItem } from './components/draggableItem'
+import { DraggableItem, Overlay } from './components'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { useMainContent } from './hooks'
-import { Overlay } from './components/overlay'
-import { useOverlay } from './hooks/useOverlay'
+import { useMainContent, useOverlay } from './hooks'
 
 export const MainContent = () => {
-  const { isLoading, items, moveItem } = useMainContent()
+  const { isLoading, isSaving, items, moveItem, calculateTimeSinceLastSave } =
+    useMainContent()
   const { selectedImage, closeOverlay, openOverlay } = useOverlay()
 
   return (
     <div className={styles.container}>
       <h1>Documents</h1>
+      <p>{`last update: ${calculateTimeSinceLastSave()}`}</p>
       <DndProvider backend={HTML5Backend}>
         <Grid container spacing={3}>
           {(isLoading ? Array.from(new Array(5)) : items)?.map(
@@ -30,9 +30,13 @@ export const MainContent = () => {
           )}
         </Grid>
       </DndProvider>
-      {/* Overlay for displaying the selected image */}
-      {selectedImage && (
-        <Overlay selectedImage={selectedImage} closeOverlay={closeOverlay} />
+      {/* Overlay for displaying the selected image or saving */}
+      {(selectedImage || isSaving) && (
+        <Overlay
+          selectedImage={selectedImage}
+          onClick={isSaving ? () => {} : closeOverlay}
+          moode={isSaving ? 'saving' : 'image'}
+        />
       )}
     </div>
   )
