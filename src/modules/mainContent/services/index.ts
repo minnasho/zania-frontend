@@ -2,7 +2,7 @@ import { TDocument } from '../types'
 
 export const fetchDocuments = async () => {
   try {
-    const response = await fetch('api/documents')
+    const response = await fetch('/zania-frontend/api/documents')
     return response.json()
   } catch (error) {
     console.error('error while fetching documents list', error)
@@ -15,7 +15,7 @@ export const changeDocumentsOrder = async ({
   newOrderedDocs: TDocument[]
 }) => {
   try {
-    const response = await fetch('api/documents', {
+    const response = await fetch('/zania-frontend/api/documents', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
